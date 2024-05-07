@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_Salary">
+
+    <View
+        android:id="@+id/salary_LAY_top"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#E91E63"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/salary_LAY_top"
+        android:padding="32dp"
+        android:background="#FFFFFF">
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/salary_LBL_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:text="Salary Calculator"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/salary_EDT_gross"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_below="@id/salary_LBL_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:placeholderText="10000"
+            android:hint="Gross salary"
+            android:padding="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:ems="9"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/salary_BTN_calculate"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/salary_EDT_gross"
+            android:layout_centerHorizontal="true"
+            app:strokeColor="@color/button_text_color"
+            android:textColor="@color/button_text_color"
+            android:layout_marginTop="32dp"
+            app:cornerRadius="20dp"
+            android:text="calculate"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/salary_LBL_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            android:text="000,000"/>
+
+    </RelativeLayout>
+
+
+
+
+
+
+</RelativeLayout>
