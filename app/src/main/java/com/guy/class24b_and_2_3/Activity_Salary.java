@@ -38,24 +38,38 @@ public class Activity_Salary extends AppCompatActivity {
         salary_BTN_calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calculate();
+                calculateClicked();
             }
         });
 
     }
 
-    private void calculate() {
+    private void calculateClicked() {
         salary_EDT_gross.setError("");
         String grossInput = salary_EDT_gross.getEditText().getText().toString();
-        int gross;
+        int gross = 0;
         try {
             gross = Integer.parseInt(grossInput);
-            salary_LBL_result.setText("" + gross);
         } catch (NumberFormatException ex) {
             salary_EDT_gross.setError("wrong input");
             Toast.makeText(this, "Wrong Input", Toast.LENGTH_SHORT).show();
         }
+
+        if (gross > 0) {
+            double result = calculate(gross);
+            salary_LBL_result.setText("" + result);
+        }
+
+
+
         hideKeyboard();
+    }
+
+    private double calculate(int gross) {
+        double result = 0;
+
+
+        return result;
     }
 
     private void hideKeyboard() {
