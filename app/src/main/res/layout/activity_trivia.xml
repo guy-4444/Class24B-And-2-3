@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".Activity_Trivia">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:alpha="0.2"
+        android:src="@drawable/img_back"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/trivia_LAY_heartLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/trivia_LBL_title"
+        android:layout_margin="16dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/trivia_IMG_heart1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_heart"/>
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="0dp"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/trivia_IMG_heart2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_heart"/>
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="0dp"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/trivia_IMG_heart3"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_heart"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/trivia_LBL_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="16dp"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:text="AI Trivia"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/trivia_IMG_question"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_heart"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/trivia_LBL_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/trivia_LAY_heartLayout"
+        android:layout_alignBottom="@id/trivia_LAY_heartLayout"
+        android:layout_marginEnd="16dp"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:text="000"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="64dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:backgroundTint="#4CAF50"
+            app:icon="@drawable/ic_checked"
+            app:iconGravity="textEnd"
+            app:iconSize="52dp"
+            />
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="0dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:backgroundTint="#F44336"
+            app:icon="@drawable/ic_cross"
+            app:iconGravity="textEnd"
+            app:iconSize="52dp"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</RelativeLayout>
