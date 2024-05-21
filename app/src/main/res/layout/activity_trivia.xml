@@ -53,6 +53,17 @@
             android:scaleType="fitCenter"
             android:src="@drawable/ic_heart"/>
 
+        <View
+            android:layout_width="12dp"
+            android:layout_height="0dp"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/trivia_IMG_heart4"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_heart"/>
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <com.google.android.material.textview.MaterialTextView
@@ -97,6 +108,7 @@
         android:orientation="horizontal">
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/trivia_BTN_green"
             style="@style/Widget.Material3.Button.Icon"
             android:layout_width="85dp"
             android:layout_height="85dp"
@@ -113,6 +125,7 @@
             android:layout_height="0dp"/>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/trivia_BTN_red"
             style="@style/Widget.Material3.Button.Icon"
             android:layout_width="85dp"
             android:layout_height="85dp"
