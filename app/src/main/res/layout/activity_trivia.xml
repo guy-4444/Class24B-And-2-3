@@ -77,6 +77,16 @@
         android:textColor="#ffffff"
         android:text="AI Trivia"/>
 
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/trivia_PRG_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/trivia_IMG_question"
+        android:layout_alignStart="@id/trivia_IMG_question"
+        android:layout_alignEnd="@id/trivia_IMG_question"
+        android:layout_marginBottom="8dp"
+        />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/trivia_IMG_question"
         android:layout_width="200dp"

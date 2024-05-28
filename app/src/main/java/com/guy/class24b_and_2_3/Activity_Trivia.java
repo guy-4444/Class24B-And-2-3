@@ -1,21 +1,18 @@
 package com.guy.class24b_and_2_3;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 import com.google.android.material.textview.MaterialTextView;
-
-import java.util.ArrayList;
 
 public class Activity_Trivia extends AppCompatActivity {
 
@@ -24,6 +21,7 @@ public class Activity_Trivia extends AppCompatActivity {
     private MaterialTextView trivia_LBL_score;
     private MaterialButton trivia_BTN_green;
     private MaterialButton trivia_BTN_red;
+    private LinearProgressIndicator trivia_PRG_progress;
 
     private GameManager gameManager;
 
@@ -33,7 +31,7 @@ public class Activity_Trivia extends AppCompatActivity {
         setContentView(R.layout.activity_trivia);
 
         findViews();
-        gameManager = new GameManager(10, 3);
+        gameManager = new GameManager(12, 3);
 
 
         updateLivesUI();
@@ -42,7 +40,28 @@ public class Activity_Trivia extends AppCompatActivity {
         trivia_BTN_green.setOnClickListener(v -> answered(true));
         trivia_BTN_red.setOnClickListener(v -> answered(false));
 
+        trivia_PRG_progress.setMax(gameManager.getNumOfQuestions());
     }
+
+    private void openAdvertisementDialog() {
+        new MaterialAlertDialogBuilder(this)
+                .setTitle("No lives")
+                .setMessage("watch ad for extra live")
+                .setPositiveButton("Yes", (dialog, which) -> showVideoAd())
+                .setNegativeButton("No", (dialog, which) -> noVideoAd())
+        .show();
+    }
+
+    private void showVideoAd() {
+        gameManager.addExtraLive();
+        updateLivesUI();
+        updateQuestionUI();
+    }
+
+    private void noVideoAd() {
+        gameDone();
+    }
+
 
     private void answered(boolean greenClicked) {
         Log.d("pttt", "answered clicked: " + greenClicked);
@@ -74,23 +93,30 @@ public class Activity_Trivia extends AppCompatActivity {
     }
 
     private void nextQuestion() {
-        gameManager.nextQuestion();
-
         if (gameManager.getLives() == 0) {
             lose();
             return;
-        } else if (gameManager.noMoreQuestions()) {
+        }
+
+        gameManager.nextQuestion();
+
+        if (gameManager.noMoreQuestions()) {
             win();
             return;
         }
 
+        updateQuestionUI();
+    }
+
+    private void updateQuestionUI() {
         int image = gameManager.getCurrentImage();
         trivia_IMG_question.setImageResource(image);
+        trivia_PRG_progress.setProgress(gameManager.getCurrentIndex() + 1);
     }
 
     private void lose() {
         Toast.makeText(this, "You lose", Toast.LENGTH_SHORT).show();
-        gameDone();
+        openAdvertisementDialog();
     }
 
     private void win() {
@@ -112,6 +138,7 @@ public class Activity_Trivia extends AppCompatActivity {
         trivia_LBL_score = findViewById(R.id.trivia_LBL_score);
         trivia_BTN_green = findViewById(R.id.trivia_BTN_green);
         trivia_BTN_red = findViewById(R.id.trivia_BTN_red);
+        trivia_PRG_progress = findViewById(R.id.trivia_PRG_progress);
 
         trivia_IMG_hearts = new AppCompatImageView[] {
                 findViewById(R.id.trivia_IMG_heart1),

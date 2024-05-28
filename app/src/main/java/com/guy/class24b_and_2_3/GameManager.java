@@ -15,7 +15,6 @@ public class GameManager {
             lives = initialLives;
         }
 
-
         questions.add(new Question().setImage(R.drawable.img_watermelon_juice).setHealthy(true));
         questions.add(new Question().setImage(R.drawable.img_tacos).setHealthy(false));
         questions.add(new Question().setImage(R.drawable.img_soup).setHealthy(true));
@@ -36,7 +35,7 @@ public class GameManager {
     }
 
     public void incrementScore() {
-        score++;
+        score += 10;
     }
 
     public void decreaseLive() {
@@ -69,5 +68,17 @@ public class GameManager {
 
     private Question getCurrent() {
         return questions.get(currentQuestion);
+    }
+
+    public int getNumOfQuestions() {
+        return questions.size();
+    }
+
+    public int getCurrentIndex() {
+        return currentQuestion;
+    }
+
+    public void addExtraLive() {
+        lives++;
     }
 }
