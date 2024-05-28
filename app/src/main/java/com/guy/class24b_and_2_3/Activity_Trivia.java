@@ -37,8 +37,8 @@ public class Activity_Trivia extends AppCompatActivity {
         updateLivesUI();
         nextQuestion();
 
-        trivia_BTN_green.setOnClickListener(v -> answered(true));
-        trivia_BTN_red.setOnClickListener(v -> answered(false));
+        trivia_BTN_green.setOnClickListener(v -> answered(true, true));
+        trivia_BTN_red.setOnClickListener(v -> answered(false, true));
 
         trivia_PRG_progress.setMax(gameManager.getNumOfQuestions());
     }
@@ -56,6 +56,8 @@ public class Activity_Trivia extends AppCompatActivity {
         gameManager.addExtraLive();
         updateLivesUI();
         updateQuestionUI();
+
+        answered(false, false);
     }
 
     private void noVideoAd() {
@@ -63,15 +65,15 @@ public class Activity_Trivia extends AppCompatActivity {
     }
 
 
-    private void answered(boolean greenClicked) {
+    private void answered(boolean greenClicked, boolean isFromUser) {
         Log.d("pttt", "answered clicked: " + greenClicked);
 
 
 
-        if (gameManager.isCorrect(greenClicked)) {
-            gameManager.incrementScore();
-        } else {
+        if (!gameManager.isCorrect(greenClicked)  || !isFromUser) {
             gameManager.decreaseLive();
+        } else {
+            gameManager.incrementScore();
         }
 
         trivia_LBL_score.setText("" + gameManager.getScore());
@@ -104,6 +106,7 @@ public class Activity_Trivia extends AppCompatActivity {
             win();
             return;
         }
+
 
         updateQuestionUI();
     }
